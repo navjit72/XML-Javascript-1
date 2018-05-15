@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Week1 XML</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function displayData() {
+                var email = document.getElementById('email').value;
+                var dov = document.getElementById('dov').value;
+                var comm = document.getElementById('comments').value;
+                alert("Data: Email:- " + email + " Date of Visit:- "+dov+" Comments:- " + comm);
+            }
+        </script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div class="data">
+            <form>
+                <label>Your Email: </label>
+                <input type="text" id="email"><br>
+                <label>Date of visit: </label>
+                <input type="date" id="dov"><br>
+                <label>Your Comment: </label>
+                <textarea id="comments"></textarea><br>
+                <button onclick="displayData()">Click here to display data</button>
+            </form> 
+        </div>
+    </body>
+</html>
