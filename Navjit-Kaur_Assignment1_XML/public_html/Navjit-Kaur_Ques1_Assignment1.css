@@ -1,0 +1,31 @@
+Program {
+    background-color: #ffffff;
+    width: 100%;
+}
+semester {
+    display: block;
+    margin-bottom: 20pt;
+    text-align: center;
+}
+semesterNum {
+    display: block;
+    font-size: 20pt;
+    margin-bottom: 20pt;
+    margin-top: 5pt;
+    text-decoration: underline;
+}
+course{
+    display: block;
+    margin-bottom: 5pt;
+}
+courseName {
+    display: block;
+    color: #ff0000;
+    font-size: 15pt;
+    text-decoration: underline;
+}
+time, dayOfClass {
+    display: block;
+    color: #000000;
+    margin-left: 20pt;
+}

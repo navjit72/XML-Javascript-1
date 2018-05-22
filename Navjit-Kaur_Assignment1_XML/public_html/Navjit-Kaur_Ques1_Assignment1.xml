@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="Navjit-Kaur_Ques1_Assignment1.css" ?>
+<!DOCTYPE Program[
+<!ELEMENT Program (semester+)>
+<!ELEMENT semester (semesterNum, course+)>
+<!ELEMENT semesterNum (#PCDATA)>
+<!ELEMENT course (courseName, time, dayOfClass)>
+<!ELEMENT courseName (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT dayOfClass (#PCDATA)>
+<!ATTLIST semester part (first | second) #REQUIRED>
+]>
+<Program>
+    <semester part="first">
+        <semesterNum>Semester 1</semesterNum>
+        <course>
+            <courseName>Java Programming</courseName>
+            <time>2pm to 5pm</time>
+            <dayOfClass>Tuesday</dayOfClass>
+        </course>
+        <course>
+            <courseName>Requirement Analysis and Design</courseName>
+            <time>2pm to 5pm</time>
+            <dayOfClass>Wednesday</dayOfClass>
+        </course>
+        <course>
+            <courseName>Web Programming</courseName>
+            <time>9am to 11:30am</time>
+            <dayOfClass>Thursday</dayOfClass>
+        </course>
+        <course>
+            <courseName>Operating Systems</courseName>
+            <time>2pm to 5pm</time>
+            <dayOfClass>Thursday</dayOfClass>
+        </course>
+        <course>
+            <courseName>Database Programming</courseName>
+            <time>2pm to 5pm</time>
+            <dayOfClass>Friday</dayOfClass>
+        </course>
+    </semester>
+    <semester part="second">
+        <semesterNum>Semester 2</semesterNum>
+        <course>
+            <courseName>Databse Programming with Java</courseName>
+            <time>8am to 11:30am</time>
+            <dayOfClass>Tuesday</dayOfClass>
+        </course>
+        <course>
+            <courseName>DataStructures and Design Patterns</courseName>
+            <time>12:30pm to 4pm</time>
+            <dayOfClass>Tuesday</dayOfClass>
+        </course>
+        <course>
+            <courseName>Programming using Csharp.NET</courseName>
+            <time>8am to 11:30am</time>
+            <dayOfClass>Wednesday</dayOfClass>
+        </course>
+        <course>
+            <courseName>XML and Javascript</courseName>
+            <time>9am to 12:30am</time>
+            <dayOfClass>Thursday</dayOfClass>
+        </course>
+        <course>
+            <courseName>SQL Server Database Development</courseName>
+            <time>8am to 11:30am</time>
+            <dayOfClass>Friday</dayOfClass>
+        </course>
+        <course>
+            <courseName>Android App Development</courseName>
+            <time>12:30pm to 4pm</time>
+            <dayOfClass>Friday</dayOfClass>
+        </course>
+    </semester>
+</Program>
