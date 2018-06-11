@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmlData:document xmlns:xmlData="http://www.abc.com/data">
+    <xmlData:item xmlns:ns ="http://www.z.com/data">
+        <ns:details>What’s wrong with this document?</ns:details> 
+    </xmlData:item> 
+</xmlData:document> 
