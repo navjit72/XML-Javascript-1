@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schoolLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="QuizRussianDoll.xsd">
+
+    <play>
+
+        <publicationYear>1898</publicationYear>
+
+        <title>Arms &#38; The Man</title>
+
+        <author>George Bernard Shaw</author>
+
+        <desc>Comedy dealing with the futility of warand the hypocrisy of human nature.</desc>
+
+    </play>
+    
+    <play>
+        <publicationYear>1950</publicationYear>
+
+        <title>The Mousetrap</title>
+
+        <author>Agatha Christie</author>
+
+        <desc>A traditional whodunnitwith an extraordinary twist.</desc>
+
+    </play>
+
+</schoolLibrary>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students>
+    <grad:student xmlns:grad = "https://www.develop.com/student">
+        <grad:id>32435353</grad:id>
+        <grad:name>ABC</grad:name>
+        <grad:language>Csharp</grad:language>
+        <grad:rating>9.5</grad:rating>
+    </grad:student>
+    <schl:student xmlns:schl = "http://www.school.com/student">
+        <schl:id>31-568-8754</schl:id>
+        <schl:name>XYZ</schl:name>
+        <schl:language>Spanish</schl:language>
+        <schl:rating>2.5</schl:rating>        
+    </schl:student>
+</students>

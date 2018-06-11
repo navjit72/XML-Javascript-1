@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>XML and JavaScript</title>
+        <script type="text/javascript">
+            function show(){
+                //var x = document.getElementsByTagName("li")[0].innerHTML;
+                //document.getElementsByTagName("p")[1].innerHTML=x;
+                //var y = document.getElementsByTagName("ul")[0].innerHTML;
+                //document.getElementsByTagName("p")[2].innerHTML=y;
+                z="";
+                noItems=document.getElementsByTagName("li").length;
+                for(i=0;i<noItems;i++)
+                {
+                    z += document.getElementsByTagName("li")[i].innerHTML+"<br>";
+                }
+                document.getElementsByTagName("p")[3].innerHTML=z;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1> ITC5202 </h1>
+        <p>we are going to talk about the followings in this week</p>
+        <ul id="list">
+            <li>DOM</li>
+            <li>how to process XML data using DOM</li>
+            <li>XML DOM</li>
+            <li>JS</li>
+            <li>JQuery</li>
+        </ul>
+        <button onclick="show();">Show page title</button>
+        <p id="display">show the first item in the above list here:</p>
+        <p></p>
+        <p></p>
+    </body>
+</html>

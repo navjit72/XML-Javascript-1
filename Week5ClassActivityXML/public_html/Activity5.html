@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+<body>
+
+    <p id="demo"></p>
+
+<script>
+//Create the XHR object
+var xhttp = new XMLHttpRequest();
+//Open the file
+xhttp.open("GET", "books.xml", false);
+//Send the request
+xhttp.send();
+// Read data
+xmlDoc = xhttp.responseXML;    
+//Display data  
+x=xmlDoc.getElementsByTagName("title")[0];
+y=x.childNodes[0];
+z=y.nodeValue;
+document.getElementsByTagName("p")[0].innerHTML = y;
+
+</script>
+
+</body>
+</html>

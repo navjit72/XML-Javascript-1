@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <!--simple elements-->   
+   <xs:attribute name="degreeID" type="idType" />
+   <xs:attribute name="degreeCode" type="codeType" />
+   <xs:element name="title" type="xs:string" />
+   <xs:element name="approvalDate" type="xs:date" />
+   <xs:element name="effectiveDate" type="xs:date" />
+   <xs:element name="summary" type="xs:string" />
+   <xs:element name="coordinator" type="xs:string" />
+   <xs:attribute name="date" type="xs:date" />
+        
+   <xs:simpleType name="idType">
+      <xs:restriction base="xs:ID">
+         <xs:pattern value="IT\d{2}-\d{3}-\d{3}" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="codeType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="MP" />
+         <xs:enumeration value="SP" />
+         <xs:enumeration value="WPA" />
+      </xs:restriction>
+   </xs:simpleType>
+        
+   <xs:element name="comment">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute ref="date" use="required" />
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+
+    <!--complex element-->
+   <xs:element name="degree">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="title" />
+            <xs:element ref="approvalDate" minOccurs="0" />
+            <xs:element ref="effectiveDate" />
+            <xs:element ref="summary" />
+            <xs:element ref="coordinator" />
+            <xs:element ref="comment" minOccurs="0" maxOccurs="unbounded" />
+	 </xs:sequence>
+         <xs:attribute ref="degreeID" use="required" />
+         <xs:attribute ref="degreeCode" use="required" />
+      </xs:complexType>
+   </xs:element>
+
+   <xs:element name="degrees">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="degree" minOccurs="1" maxOccurs="unbounded" />
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+                
+</xs:schema>
