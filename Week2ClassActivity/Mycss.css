@@ -1,0 +1,43 @@
+products{
+    padding-left: 20px;
+}
+product{
+    padding-left:20px;
+}
+price{
+    color:blue;
+}
+productName{
+    color: green;
+    display: block;
+}
+manufacturer{
+    background-color: green;
+    display: block;
+}
+productItems{
+    font-size: large;
+    display: block;
+}
+Person{
+    padding-left: 20px;
+}
+name{
+    font-size: larger;
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+phone{
+    display: block;
+    color: blue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+email{
+    display:block;
+    color:chocolate;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
