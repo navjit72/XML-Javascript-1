@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Question 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p></p>
+        <script>
+            //Create the XHR object
+            var xhttp = new XMLHttpRequest();
+            //Open the file
+            xhttp.open("GET", "library_items.xml", false);
+            //Send the request
+            xhttp.send();
+            // Read data
+            xmlDoc = xhttp.responseXML.getElementsByTagName("author");
+            x = xmlDoc.length;
+            rows = "<table border='1'";
+            rows+="<tr><th>Authors</th></tr>";
+            for (i = 0; i < x; i++)
+            {
+                rows += "<tr><td>" + xmlDoc[i].innerHTML + "</td></tr>";
+            }
+            rows += "</table>";
+
+            //Display data   
+            document.getElementsByTagName("p")[0].innerHTML = rows;
+
+        </script>
+    </body>
+</html>
