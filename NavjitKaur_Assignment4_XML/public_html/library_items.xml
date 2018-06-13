@@ -29,7 +29,7 @@
       </title>
       <type>Visual Material</type>
       <authors>
-         <author>Whedon, Josh</author>
+         <author id="authorId">Whedon, Josh</author>
       </authors>
       <subjects>
          <subject>Human experimentation</subject>

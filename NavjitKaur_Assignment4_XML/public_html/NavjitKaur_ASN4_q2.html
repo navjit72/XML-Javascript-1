@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Question 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p></p>
+        <script>
+            //Create the XHR object
+            var xhttp = new XMLHttpRequest();
+            //Open the file
+            xhttp.open("GET", "library_items.xml", false);
+            //Send the request
+            xhttp.send();
+            // Read data
+            xmlDoc = xhttp.responseXML;
+            xTitle = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
+            xType = xmlDoc.getElementsByTagName("type")[1].childNodes[0].nodeValue;
+            xPublisher = xmlDoc.getElementsByTagName("publisher")[1].childNodes[0].nodeValue;
+            xISBN = xmlDoc.getElementsByTagName("isbn")[1].childNodes[0].nodeValue;
+            xLocation = xmlDoc.getElementsByTagName("location")[1].childNodes[0].nodeValue;
+            xCollection = xmlDoc.getElementsByTagName("collection")[1].childNodes[0].nodeValue;
+            xCallNo = xmlDoc.getElementsByTagName("callno")[1].childNodes[0].nodeValue;
+            xStatus = xmlDoc.getElementsByTagName("status")[1].childNodes[0].nodeValue;
+            
+            x = xmlDoc.getElementsByTagName("authors")[1];
+            xlen = x.childNodes.length;
+            y = x.firstChild;
+            authorsTxt = "";
+            for (i = 0; i < xlen; i++) {
+                if (y.nodeType == 1) {
+                    authorsTxt += y.childNodes[0].nodeValue + "<br>";
+                }
+                y = y.nextSibling;
+            }
+            
+            x = xmlDoc.getElementsByTagName("subjects")[1];
+            xlen = x.childNodes.length;
+            y = x.firstChild;
+            subjectsTxt = "";
+            for (i = 0; i < xlen; i++) {
+                if (y.nodeType == 1) {
+                    subjectsTxt += y.childNodes[0].nodeValue + "<br>";
+                }
+                y = y.nextSibling;
+            }
+
+            rows = "<table border='1'>";
+            rows += "<tr><th>Title</th><th>Type</th><th>Authors</th><th>Subjects</th><th>Publisher</th>" +
+                    "<th>ISBN</th><th>Location</th><th>Collection</th><th>CallNo</th><th>Status</th>";
+            rows += "<tr><td>" + xTitle + "</td>" + "<td>" + xType + "</td>" + "<td>" + authorsTxt + "</td>" +
+                    "<td>" + subjectsTxt + "</td>" + "<td>" + xPublisher + "</td>" + "<td>" + xISBN + "</td>" +
+                    "<td>" + xLocation + "</td>" + "<td>" + xCollection + "</td>" + "<td>" + xCallNo + "</td>" +
+                    "<td>" + xStatus + "</td></tr>";
+            rows += "</table>";
+
+            //Display data  
+            document.getElementsByTagName("p")[0].innerHTML = rows;
+
+        </script>
+    </body>
+</html>
