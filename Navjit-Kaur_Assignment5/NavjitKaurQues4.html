@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 4A</title>
+</head>
+<body>
+<div align="center" style="margin-top: 50px;">
+    <button style="background-color: antiquewhite; width: 30%; height: 40px" type="button" onclick="loadDoc()">Parse
+        JSON data
+    </button>
+</div>
+<br/>
+<div style="width:75%; margin-left: 600px;">
+    <div style="width: 25%; text-align: left; float: left;">
+        <h1 id="Tname" style="color: brown; text-decoration-line: underline; text-decoration-color:green"></h1>
+        <p id="Toronto" style="font-size: large"></p>
+    </div>
+    <div style="width: 25%; text-align: left; float: left;">
+        <h1 id="Bname" style="color: brown; text-decoration-line: underline; text-decoration-color:green"></h1>
+        <p id="Brampton" style="font-size: large"></p>
+    </div>
+</div>
+<script>
+    function loadDoc() {
+        var xhttpT = new XMLHttpRequest();
+        var xhttpT1 = new XMLHttpRequest();
+        var xhttpB = new XMLHttpRequest();
+        var xhttpB1 = new XMLHttpRequest();
+        xhttpT.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunctionT(this);
+            }
+        };
+        xhttpT1.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunctionT1(this);
+            }
+        };
+        xhttpB.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunctionB(this);
+            }
+        };
+        xhttpB1.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunctionB1(this);
+            }
+        };
+        xhttpT.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Toronto,ca&units=imperial&appid=d22e67d7d351b5e16fad248edf42d7ed", true);
+        xhttpT1.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Toronto,ca&units=metric&appid=d22e67d7d351b5e16fad248edf42d7ed", true);
+        xhttpT.send();
+        xhttpT1.send();
+        xhttpB.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Brampton,ca&units=imperial&appid=d22e67d7d351b5e16fad248edf42d7ed", true);
+        xhttpB1.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Brampton,ca&units=metric&appid=d22e67d7d351b5e16fad248edf42d7ed", true);
+        xhttpB.send();
+        xhttpB1.send();
+    }
+
+    function myFunctionT(data) {
+        var jsonDoc = data.responseText;
+        var myObj = JSON.parse(jsonDoc);
+        var desc = "";
+        document.getElementById("Tname").innerHTML = myObj.name + ":-" + "<br/>";
+        for (var i = 0; i < myObj.weather.length; i++) {
+            desc += myObj.weather[i].description + " ";
+        }
+        document.getElementById("Toronto").innerHTML += "Weather : " + "<span style='color: coral; font-style: italic; font-weight: bold'>" + desc + "</span>" + "<br/>";
+        document.getElementById("Toronto").innerHTML += "Temperature in Fahrenheit : " + "<span style='color: darkred; font-weight: bold'>" + myObj.main.temp + "</span>" + "<br/>";
+        document.getElementById("Toronto").innerHTML += "Wind Speed : " + "<span style='color: blue; font-weight: bold'>" + myObj.wind.speed + "</span>" + "<br/>";
+    }
+
+    function myFunctionT1(data) {
+        var jsonDoc = data.responseText;
+        var myObj = JSON.parse(jsonDoc);
+        document.getElementById("Toronto").innerHTML += "Temperature in Celsius : " + "<span style='color: indigo; font-weight: bold'>" + myObj.main.temp + "</span>" + "<br/>";
+    }
+
+    function myFunctionB(data) {
+        var jsonDoc = data.responseText;
+        var myObj = JSON.parse(jsonDoc);
+        var desc = "";
+        document.getElementById("Bname").innerHTML = myObj.name + ":-" + "<br/>";
+        for (var i = 0; i < myObj.weather.length; i++) {
+            desc += myObj.weather[i].description + " ";
+        }
+        document.getElementById("Brampton").innerHTML += "Weather : " + "<span style='color: coral; font-style: italic; font-weight: bold'>" + desc + "</span>" + "<br/>";
+        document.getElementById("Brampton").innerHTML += "Temperature in Fahrenheit : " + "<span style='color: darkred; font-weight: bold'>" + myObj.main.temp + "</span>" + "<br/>";
+        document.getElementById("Brampton").innerHTML += "Wind Speed : " + "<span style='color: blue; font-weight: bold'>" + myObj.wind.speed + "</span>" + "<br/>";
+    }
+
+    function myFunctionB1(data) {
+        var jsonDoc = data.responseText;
+        var myObj = JSON.parse(jsonDoc);
+        document.getElementById("Brampton").innerHTML += "Temperature in Celsius : " + "<span style='color: indigo; font-weight: bold'>" + myObj.main.temp + "</span>" + "<br/>";
+    }
+</script>
+</body>
+</html>

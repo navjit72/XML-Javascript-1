@@ -1,0 +1,143 @@
+{
+  "Program": {
+    "semester": [
+      {
+        "semesterNum": "Semester 1",
+        "startDate":"Jan 15,2018",
+        "course": [
+          {
+            "courseName": "Java Programming",
+            "timeOfClass": "2pm to 5pm",
+            "dayOfClass": "Tuesday",
+            "status":"Passed",
+            "credits":"3"
+          },
+          {
+            "courseName": "Requirement Analysis and Design",
+            "timeOfClass": "2pm to 5pm",
+            "dayOfClass": "Wednesday",
+            "status":"Passed",
+            "credits":"3"
+          },
+          {
+            "courseName": "Web Programming",
+            "timeOfClass": "9am to 11:30am",
+            "dayOfClass": "Thursday",
+            "status":"Passed",
+            "credits":"3"
+          },
+          {
+            "courseName": "Operating Systems",
+            "timeOfClass": "2pm to 5pm",
+            "dayOfClass": "Thursday",
+            "status":"Passed",
+            "credits":"3"
+          },
+          {
+            "courseName": "Database Programming",
+            "timeOfClass": "2pm to 5pm",
+            "dayOfClass": "Friday",
+            "status":"Passed",
+            "credits":"3"
+          }
+        ]
+      },
+      {
+        "semesterNum": "Semester 2",
+        "startDate":"May 08,2018",
+        "course": [
+          {
+            "courseName": "Database Programming with Java",
+            "timeOfClass": "8am to 11:30am",
+            "dayOfClass": "Tuesday",
+            "status":"Doing",
+            "credits":"3"
+          },
+          {
+            "courseName": "DataStructures and Design Patterns",
+            "timeOfClass": "12:30pm to 4pm",
+            "dayOfClass": "Tuesday",
+            "status":"Doing",
+            "credits":"3"
+          },
+          {
+            "courseName": "Programming using Csharp.NET",
+            "timeOfClass": "8am to 11:30am",
+            "dayOfClass": "Wednesday",
+            "status":"Doing",
+            "credits":"3"
+          },
+          {
+            "courseName": "XML and Javascript",
+            "timeOfClass": "9am to 12:30am",
+            "dayOfClass": "Thursday",
+            "status":"Doing",
+            "credits":"3"
+          },
+          {
+            "courseName": "SQL Server Database Development",
+            "timeOfClass": "8am to 11:30am",
+            "dayOfClass": "Friday",
+            "status":"Doing",
+            "credits":"3"
+          },
+          {
+            "courseName": "Android App Development",
+            "timeOfClass": "12:30pm to 4pm",
+            "dayOfClass": "Friday",
+            "status":"Doing",
+            "credits":"3"
+          }
+        ]
+      },
+      {
+        "semesterNum": "Semester 3",
+        "startDate":"Jan 07,2019",
+        "course": [
+          {
+            "courseName": "Advanced android",
+            "timeOfClass": "8am to 11:30am",
+            "dayOfClass": "Tuesday",
+            "status":"Will be taken",
+            "credits":"3"
+          },
+          {
+            "courseName": "Big Data",
+            "timeOfClass": "12:30pm to 4pm",
+            "dayOfClass": "Tuesday",
+            "status":"Will be taken",
+            "credits":"3"
+          },
+          {
+            "courseName": "Programming using ASP.NET",
+            "timeOfClass": "8am to 11:30am",
+            "dayOfClass": "Wednesday",
+            "status":"Will be taken",
+            "credits":"3"
+          },
+          {
+            "courseName": "IOS app development",
+            "timeOfClass": "9am to 12:30am",
+            "dayOfClass": "Thursday",
+            "status":"Will be taken",
+            "credits":"3"
+          },
+          {
+            "courseName": "Cloud computing",
+            "timeOfClass": "8am to 11:30am",
+            "dayOfClass": "Friday",
+            "status":"Will be taken",
+            "credits":"3"
+          },
+          {
+            "courseName": "J2EE Web components",
+            "timeOfClass": "12:30pm to 4pm",
+            "dayOfClass": "Friday",
+            "status":"Will be taken",
+            "credits":"3"
+          }
+        ]
+      }
+    ]
+  }
+}

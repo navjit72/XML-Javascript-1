@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2B</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "NavjitKaur.json", false);
+    xhttp.send();
+    var myobj = JSON.parse(xhttp.responseText);
+    var item = myobj.itemlist.item[1];
+
+    rows = "<table border='1' align='center' '>";
+    rows += "<tr><th>Title</th><th>Type</th><th>Author</th><th>Subjects</th><th>Publisher</th><th>ISBN</th>" +
+        "<th>Location</th><th>Collection</th><th>CallNo</th><th>Status</th></tr>";
+    rows += "<tr><td>" + item.title + "</td><td>" + item.type + "</td><td>";
+
+    for (var i = 0; i < item.authors.author.length; i++) {
+        rows+= item.authors.author[i] + "<br/>";
+    }
+    rows+="</td><td>";
+    for (var i = 0; i < item.subjects.subject.length; i++) {
+        rows+= item.subjects.subject[i] + "<br/>";
+    }
+     rows+="</td><td>" + item.publisher + "</td><td>" + item.isbn + "</td><td>" + item.location
+         + "</td><td>" + item.collection + "</td><td>" + item.callno + "</td>";
+    rows+="<td>" + "Returned on : " + item.status["-return"] +"<br/>"+ "Status : " + item.status["#text"] + "</td>";
+
+    rows += "</tr></table>";
+    document.getElementById("result").innerHTML = rows;
+</script>
+
+</body>
+</html>

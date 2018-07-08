@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "Question3_NavjitKaur.json", false);
+    xhttp.send();
+    var myobj = JSON.parse(xhttp.responseText);
+    var semester = myobj.Program.semester;
+
+    rows = "<table border='1' align='center' '>";
+    rows += "<tr><th>Semester</th><th>Start Date</th><th>Course Name</th><th>Time</th>" +
+        "<th>Day</th><th>Status</th><th>Credits</th></tr>";
+    for(var i =0; i < semester.length;i++)
+    {
+        rows+='<tr><td rowspan=\"'+(semester[i].course.length)+'\">'+ semester[i].semesterNum + "</td>"+
+            '<td rowspan=\"'+(semester[i].course.length)+'\">' + semester[i].startDate + "</td><td>" +
+            semester[i].course[0].courseName + "</td><td>" +
+            semester[i].course[0].timeOfClass + "</td><td>" +
+            semester[i].course[0].dayOfClass + "</td><td>" +
+            semester[i].course[0].status + "</td><td>" +
+            semester[i].course[0].credits +"</td></tr>";
+        for(var j = 1 ; j < semester[i].course.length; j++)
+        {
+            rows+="<tr><td>" +
+                semester[i].course[j].courseName + "</td><td>" +
+                semester[i].course[j].timeOfClass + "</td><td>" +
+                semester[i].course[j].dayOfClass + "</td><td>" +
+                semester[i].course[j].status + "</td><td>" +
+                semester[i].course[j].credits +"</td></tr>";
+        }
+    }
+    rows += "</table>";
+    document.getElementById("result").innerHTML = rows;
+</script>
+</body>
+</html>

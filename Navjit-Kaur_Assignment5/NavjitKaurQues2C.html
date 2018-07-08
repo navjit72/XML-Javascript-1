@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2C</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "NavjitKaur.json", false);
+    xhttp.send();
+    var myobj = JSON.parse(xhttp.responseText);
+    var item = myobj.itemlist.item;
+
+    rows = "<table border='1' align='center' '>";
+    rows += "<tr><th>Type</th><th>ISBN</th></tr>";
+    for (var i = 0; i < item.length; i++) {
+            rows += "<tr><td>" + item[i].type+ "</td><td>"
+                + item[i].isbn +"</td></tr>";
+    }
+    rows += "</table>";
+    document.getElementById("result").innerHTML = rows;
+</script>
+
+</body>
+</html>
