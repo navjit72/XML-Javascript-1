@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>question 1</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <p></p>
+      <script>
+         var xhttp = new XMLHttpRequest();
+         xhttp.open("GET", "xml-data.xml", false);
+         xhttp.send();
+         xmlDoc = xhttp.responseXML;
+         xmlTitle = xmlDoc.getElementsByTagName("title");
+         xmlAuthor = xmlDoc.getElementsByTagName("author");
+         xmlDescription = xmldoc.getElementsByTagName("description");
+         x = xmlTitle.length;
+         rows="<table border='1'>";
+         rows+="<tr><th>Title</th><th>Author</th><th>Description</th></tr>";
+         for(i=0;i<x;i++)
+         {
+             rows+="<tr><td>" + xmlTitle[i].innerHTML + "</td><td>"+ xmlAuthor[i].innerHTML + "</td><td>"
+             + xmlDescription[i].innerHTML + "</td></tr>";
+         }
+         rows+="</table>";
+         document.getElementsByTagName("p")[0].innerHTML = rows;
+      </script>
+   </body>
+</html>

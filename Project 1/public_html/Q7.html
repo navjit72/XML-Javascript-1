@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ITC5202 - Project</title>
+    </head>
+
+    <body>
+        <h1> Order Report</h1>
+        <button onclick="Show()"> Show order details </button>
+        <p></p>
+        <script>
+            function Show() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "Ques7.xml", false);
+                xhttp.send();
+                xmlDoc = xhttp.responseXML;
+                xmlOrder = xmlDoc.getElementsByTagName("order");
+                xmlOrderDate = xmlDoc.getElementsByTagName("date");
+                xmlItemQty = xmlDoc.getElementsByTagName("qty");
+                xmlDesc = xmlDoc.getElementsByTagName("description");
+                xmlName=xmlDoc.getElementsByTagName("name");
+                x = xmlOrder.length;
+                
+                rows="<table border='1'>";
+                for(i=0;i<x;i++)
+                {
+                    var y = xmlOrder[i].getElementsByTagName("item");
+                    for(j=0;j<y.length;j++)
+                    {
+                    rows+="<tr><td>" + xmlOrderDate[i].innerHTML + "</td><td>" +
+                            y[j].getElementsByTagName("description")[j].innerHTML + "</td><td>" +
+                            y[j].getElementsByTagName("qty")[j].innerHTML + "</td></tr>";
+                }
+                }
+//                rowsOrder = "<table border='1'>";
+//                for (i = 0; i < x; i++)
+//                {                    
+//                    xy=xmlItem[i].childNodes.length;
+//                    rowsItem = "<table border='1'>";
+//                    for(j=0;j<xy;j++)
+//                    {
+//                        rowsItem+="<tr><td>" + xmlDesc[j].innerHTML + "</td><td>"+ xmlItemQty[j].innerHTML +"</tr>";
+//                    }
+//                    rowsItem="</table>";
+//                    rowsOrder+="<tr><td>" + xmlOrderDate[i].innerHTML + "</td><td>" +rowsItem;                           
+//                }
+               rows += "</table>";
+                document.getElementsByTagName("p")[0].innerHTML = ;
+            }
+
+        </script>
+    </body>
+</html>
