@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ITC5202</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // $("id").html("");
+            $("button").on("click",function(){
+                $.getJSON("data-set1.json",function(result){
+                    console.log(result);
+                    $("#id").html(result[0].album);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<p id="id">Display Here </p>
+<button id="btn">
+    Click Me
+</button>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ITC5202</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var year = prompt("Enter the year : ");
+            $("id").html("");
+            $.getJSON("data-set.json")
+                .done(function (result) {
+                    $.each(result, function (i, value) {
+                        if (value.year == year) {
+                            $("#id").html(value.album + " " + value.year + " " + value.US_peak_chart_post);
+                        }
+                    })
+                })
+                .fail(function (error) {
+                    alert("Error loading file");
+                })
+        });
+    </script>
+</head>
+<body>
+<p id="id">Display Here </p>
+<button id="btn">
+    Click Me
+</button>
+</body>
+</html>
