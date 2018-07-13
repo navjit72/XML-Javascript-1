@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.js"-->
+            <!--integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>-->
+
+
+    <script>
+        $(document).ready(function () {
+            $("button").on("click", function () {
+                $.getJSON("Sample-data2txt.txt", function (result) {
+                    // $.each(data, function (i, field) {
+                    //     $.each(field,function (j,value) {
+                    //         $("#id").append(value.name + " : " + value.color + "<br/>");
+                    //     })
+                    $.each(result.fruit, function (index, value) {
+                        $("#id").append(value.name + " : " + value.color + "<br/>");
+                    });
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+<p id="id"></p>
+<button id="btn">
+    Click Me
+</button>
+</body>
+</html>

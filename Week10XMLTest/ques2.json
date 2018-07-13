@@ -1,0 +1,42 @@
+[
+  {
+    "Question" : "5+7*2 = ?",
+    "optionA" : "14",
+    "optionB" : "12",
+    "optionC" : "24",
+    "optionD" : "19",
+    "Answer" : "D"
+  },
+  {
+    "Question" : "5*7-2 = ?",
+    "optionA" : "30",
+    "optionB" : "32",
+    "optionC" : "33",
+    "optionD" : "31",
+    "Answer" : "C"
+  },
+  {
+    "Question" : "4*2+2 = ?",
+    "optionA" : "14",
+    "optionB" : "10",
+    "optionC" : "4",
+    "optionD" : "18",
+    "Answer" : "B"
+  },
+  {
+    "Question" : "16*2 = ?",
+    "optionA" : "24",
+    "optionB" : "42",
+    "optionC" : "54",
+    "optionD" : "32",
+    "Answer" : "D"
+  },
+  {
+    "Question" : "5*2+10 = ?",
+    "optionA" : "20",
+    "optionB" : "52",
+    "optionC" : "26",
+    "optionD" : "49",
+    "Answer" : "A"
+  }
+]
