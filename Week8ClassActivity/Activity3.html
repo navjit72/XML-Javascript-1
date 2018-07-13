@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head> <title> ITC5202 - Week8 </title>
+<body>
+
+<h1>Ajax --> JSON data</h1>
+
+<button type="button" onclick="loadDoc()">Parse JSON data</button>
+<br><br>
+<p id="demo"></p>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=London&appid=d22e67d7d351b5e16fad248edf42d7ed", true);
+  xhttp.send();
+}
+function myFunction(data) {
+   //alert("hi");
+  var jsonDoc = data.responseText;
+  var myObj = JSON.parse(jsonDoc);
+  console.log(myObj);
+  document.getElementById("demo").innerHTML = myObj.name + "<br/>";
+    document.getElementById("demo").innerHTML += "Current Temp : " + myObj.main.temp + "<br/>";
+    document.getElementById("demo").innerHTML += "Max Temp : " + myObj.main.temp_max + "<br/>";
+    document.getElementById("demo").innerHTML += "Min Temp : " + myObj.main.temp_min + "<br/>";
+}
+</script>
+
+</body>
+</html>

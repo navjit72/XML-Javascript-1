@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="cid"></p>
+<p id="desc"></p>
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET","Activity-Json-1.json",false);
+    xhttp.send();
+    var myobj = JSON.parse(xhttp.responseText);
+    //console.log(myobj.catalog.photo[0]["-cid"]);
+    document.getElementById("cid").innerHTML=myobj.catalog.photo[0]["-cid"];
+    rows ="<ul>";
+    for(var i =0; i<myobj.catalog.photo.length ; i++) {
+        rows+= "<li>" + myobj.catalog.photo[i]["description"] +"</li>";
+    }
+    rows+="</ul>";
+    document.getElementById("desc").innerHTML =rows;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "person":[
+    {
+      "name" : "ABC",
+      "email" : "a.b@gmail.com",
+      "phone" : "643545654"
+    },
+    {
+      "name" : "XYZ",
+      "email" : "xyz@gmail.com",
+      "phone" : "989797432"
+    },
+    {
+      "name" : "CDE",
+      "email" : "cd@gmail.com",
+      "phone" : "1223352"
+    },
+    {
+      "name" : "TRE",
+      "email" : "t.r@gmail.com",
+      "phone" : "675757432"
+    },
+    {
+      "name" : "YUI",
+      "email" : "y.z@gmail.com",
+      "phone" : "5446537432"
+    }
+  ]
+}

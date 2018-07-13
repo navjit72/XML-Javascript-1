@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head> <title> ITC5202 - Week8 </title>
+<body>
+
+<h1>The XMLHttpRequest Object</h1>
+
+<button type="button" onclick="loadDoc()">Get my CD collection</button>
+<br><br>
+<table border="1" id="demo"></table>
+
+<script>
+// Explain the purpose of each block of code by adding comments
+function loadDoc() {
+
+    //handler to store the newly created XMLHttpRequest.
+    var xhttp = new XMLHttpRequest();
+
+    //handler to specify what to do if the file state changes
+    //0: request not initialized
+    //1: server connection established
+    //2: request received
+    //3: processing request
+    //4: request finished and response is ready
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+        }
+    };
+
+    //opening the specified file in asynchronous mode
+    xhttp.open("GET", "cd_catalog.xml", true);
+    xhttp.send();
+
+
+}
+
+//function specifying what action to take if file is open.
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Artist</th><th>Title</th><th>Company</th><th>Price</th></tr>";
+  var x = xmlDoc.getElementsByTagName("CD");
+  for (i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+        x[i].getElementsByTagName("ARTIST")[0].innerHTML + "</td><td>" +
+        x[i].getElementsByTagName("TITLE")[0].innerHTML + "</td><td>" +
+        x[i].getElementsByTagName("COMPANY")[0].innerHTML + "</td><td>" +
+        x[i].getElementsByTagName("PRICE")[0].innerHTML + "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</body>
+</html>

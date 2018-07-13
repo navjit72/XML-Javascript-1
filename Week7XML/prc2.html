@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="name"></p>
+<p id="age"></p>
+<p id="pet"></p>
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET","json_demo.txt",false);
+    xhttp.send();
+    var obj = JSON.parse(xhttp.responseText);
+    document.getElementById("name").innerHTML=obj.name;
+    document.getElementById("age").innerHTML=obj.age;
+    rows="<ul>";
+    for(var i =0;i<obj.pets.length;i++)
+    {
+        var x = obj.pets[i];
+        //console.log(x.animal + " " + x.name);
+        rows+="<li>" + x.animal + "-" + x.name + "</li>";
+    }
+    rows+="</ul>";
+    document.getElementById("pet").innerHTML=rows;
+
+</script>
+
+</body>
+</html>
