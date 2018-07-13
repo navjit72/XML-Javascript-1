@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head> <title> ITC5202 - Week8 </title>
+<body onload="loadDoc()">
+
+<h1>Ques 3</h1>
+<br><br>
+<p id="demo"></p>
+
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            }
+        };
+        xhttp.open("GET", "http://data.fixer.io/api/latest?access_key=d2b6a7d736a8dcc5b482cca59c293bf1", true);
+        xhttp.send();
+    }
+    function myFunction(data) {
+        var jsonDoc = data.responseText;
+        var myObj = JSON.parse(jsonDoc);
+        var rates = myObj.rates;
+        console.log(myObj);
+        data="<ul>"
+        for(var i=0;i<rates.length;i++){
+            data+="<li>" +  + "</li>";
+        }
+        data+="</ul>";
+        document.getElementById("demo").innerHTML = data;
+
+    }
+</script>
+
+</body>
+</html>

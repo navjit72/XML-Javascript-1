@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ques 4</title>
+</head>
+<body>
+<h2>Country wise Currency Exchange Rate</h2>
+<select id="dropdown"></select>
+<div id="details"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        console.log("jquery working");
+        $.getJSON('Country.json',function(data){
+            var countries = data.country;
+            console.log(countries)
+            var result = "";
+            $.each(countries,function(index,country){
+                result+="<option>"+ countries[index].name +"</option>"
+            });
+            $('#dropdown').html(result);
+            testmessage();
+            $('#dropdown').change(testmessage);
+            //
+            function testmessage() {
+                var p="";
+                var conceptName = $('#dropdown').find(":selected").text();
+
+                $.each(countries,function(index,country){
+                    if(countries[index].name == conceptName){
+                        p += "<p><b>Country : </b>" + countries[index].name + "</p>";
+                        if(countries[index].province) {
+                            p += "<p><b>No. of provinces : </b>" + countries[index].province.length + "</p>";
+                        }
+                        $.each(countries[index].population,function(i,pop){
+                            if(pop["@year"] == "2011"){
+                                p += "<p><b>Population in 2011 : </b>" + pop["#text"] + "</p>";
+                            }
+                        })
+                        p += "<p><b>Inflation : </b>" + countries[index].inflation + "</p>";
+                        var noOfCity = 0
+                        if(countries[index].city) {
+                            if(countries[index].city.length) {
+                                noOfCity += countries[index].city.length;
+                            }
+                            else{
+                                noOfCity += 1
+                            }
+
+                        }
+                        else{
+                            $.each(countries[index].province,function(i,prov){
+                                if(countries[index].province[i].city && countries[index].province[i].city.length) {
+                                    noOfCity += countries[index].province[i].city.length
+                                }
+                                else{
+                                    noOfCity += 1;
+                                }
+                            })
+                        }
+                        p += "<p><b>No. of cities : </b>" + noOfCity + "</p>";
+                    }
+                })
+                $('#details').html(p);
+            }
+        });
+    })
+</script>
+</html>
+
+
+
