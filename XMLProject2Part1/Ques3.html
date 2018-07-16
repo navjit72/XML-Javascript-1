@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head> <title> ITC5202 - Week8 </title>
-<body onload="loadDoc()">
 
-<h1>Ques 3</h1>
-<br><br>
-<p id="demo"></p>
+<head>
+    <title> ITC5202 - Week8 </title>
 
-<script>
-    function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                myFunction(this);
+    <body onload="loadDoc()">
+
+        <h1>Ques 3</h1>
+        <p id="demo"></p>
+
+        <script>
+            function loadDoc() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        myFunction(this);
+                    }
+                };
+                //xhttp.open("GET", "http://data.fixer.io/api/latest?access_key=d2b6a7d736a8dcc5b482cca59c293bf1", true);
+                xhttp.open("GET", "http://www.apilayer.net/api/live?access_key=852151671a4ac6bc131a9498f832ee86", true);
+                xhttp.send();
             }
-        };
-        xhttp.open("GET", "http://data.fixer.io/api/latest?access_key=d2b6a7d736a8dcc5b482cca59c293bf1", true);
-        xhttp.send();
-    }
-    function myFunction(data) {
-        var jsonDoc = data.responseText;
-        var myObj = JSON.parse(jsonDoc);
-        var rates = myObj.rates;
-        console.log(myObj);
-        data="<ul>"
-        for(var i=0;i<rates.length;i++){
-            data+="<li>" +  + "</li>";
-        }
-        data+="</ul>";
-        document.getElementById("demo").innerHTML = data;
+            function myFunction(data) {
+                var jsonDoc = data.responseText;
+                var myObj = JSON.parse(jsonDoc);
+                var rates = myObj.quotes;
+                //console.log(myObj);
+                data = "<ul>"
+                Object.keys(rates).forEach(function (key) {
+                    //console.log("Key : " + key + ", Value : " + rates[key])
+                    data += "<li>1 USD = " + rates[key] + " " + key.substr(3) + "</li>";
+                })
+                data += "</ul>";
+                document.getElementById("demo").innerHTML = data;
 
-    }
-</script>
+            }
+        </script>
 
-</body>
+    </body>
+
 </html>
