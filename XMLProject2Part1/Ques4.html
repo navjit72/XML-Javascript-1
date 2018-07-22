@@ -1,75 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Ques 4</title>
 </head>
+
 <body>
-<h2>Country wise Currency Exchange Rate</h2>
-<select id="dropdown"></select>
-<div id="details"></div>
+    <h2 style="text-align: center">Country wise Currency Exchange Rate</h2>
+    <table border="1" align="center">
+        <tr style="background-color: tomato">
+            <th>Country</th>
+            <th>No of provinces</th>
+            <th>Population in 2011</th>
+            <th>Inflation</th>
+            <th>No of citites</th>
+            <th>Currency</th>
+        </tr>
+        <tr id="details">
+
+        </tr>
+    </table>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function(){
-        console.log("jquery working");
-        $.getJSON('Country.json',function(data){
-            var countries = data.country;
-            console.log(countries)
-            var result = "";
-            $.each(countries,function(index,country){
-                result+="<option>"+ countries[index].name +"</option>"
-            });
-            $('#dropdown').html(result);
-            testmessage();
-            $('#dropdown').change(testmessage);
-            //
-            function testmessage() {
-                var p="";
-                var conceptName = $('#dropdown').find(":selected").text();
+    $(document).ready(function () {
+        //prompt for user input
+        var countryName = prompt("Enter the country name : ");
+        var countrycode, currencyData;
+        var currency;
 
-                $.each(countries,function(index,country){
-                    if(countries[index].name == conceptName){
-                        p += "<p><b>Country : </b>" + countries[index].name + "</p>";
-                        if(countries[index].province) {
-                            p += "<p><b>No. of provinces : </b>" + countries[index].province.length + "</p>";
+        $.getJSON('Country.json', function (data) {
+            //iterating over provided data set.
+            var countries = data.country;
+            var p = "";
+            var flag = false;
+
+            $.each(countries, function (index, country) {
+                var province = 0;
+                var popul = 0;
+                var inflation = 0;
+                if (countries[index].name == countryName) {
+                    flag = true;
+
+                    //calculating number of provinces
+                    if (countries[index].province) {
+                        province = countries[index].province.length;
+                    }
+
+                    //calculating population
+                    $.each(countries[index].population, function (i, pop) {
+                        if (pop["@year"] == "2011") {
+                            popul = pop["#text"];
                         }
-                        $.each(countries[index].population,function(i,pop){
-                            if(pop["@year"] == "2011"){
-                                p += "<p><b>Population in 2011 : </b>" + pop["#text"] + "</p>";
+                    })
+
+                    //calculating inflation
+                    inflation = countries[index].inflation;
+
+                    //calculating number of cities
+                    var noOfCity = 0
+                    if (countries[index].city) {
+                        if (countries[index].city.length) {
+                            noOfCity += countries[index].city.length;
+                        }
+                        else {
+                            noOfCity += 1
+                        }
+
+                    }
+                    else {
+                        $.each(countries[index].province, function (i, prov) {
+                            if (countries[index].province[i].city && countries[index].province[i].city.length) {
+                                noOfCity += countries[index].province[i].city.length
+                            }
+                            else {
+                                noOfCity += 1;
                             }
                         })
-                        p += "<p><b>Inflation : </b>" + countries[index].inflation + "</p>";
-                        var noOfCity = 0
-                        if(countries[index].city) {
-                            if(countries[index].city.length) {
-                                noOfCity += countries[index].city.length;
-                            }
-                            else{
-                                noOfCity += 1
-                            }
+                    }
 
-                        }
-                        else{
-                            $.each(countries[index].province,function(i,prov){
-                                if(countries[index].province[i].city && countries[index].province[i].city.length) {
-                                    noOfCity += countries[index].province[i].city.length
+                    //finding value of currency
+                    $.getJSON('https://restcountries.eu/rest/v2/name/' + countryName, function (data) {
+                        countrycode = data[0].alpha2Code;
+                        console.log(countrycode);
+                        $.getJSON('http://www.apilayer.net/api/live?access_key=852151671a4ac6bc131a9498f832ee86', function (data) {
+                            currencyData = data;
+                            console.log(currencyData);
+                            $.each(currencyData.quotes, function (index, data) {
+                                if (index.substr(3, 2) == countrycode) {
+                                    console.log(countrycode + "   " + data);
+                                    currency = data;
+                                    console.log(currency);
                                 }
-                                else{
-                                    noOfCity += 1;
+                                else {
+                                    currency = 'N/A';
                                 }
                             })
-                        }
-                        p += "<p><b>No. of cities : </b>" + noOfCity + "</p>";
-                    }
-                })
-                $('#details').html(p);
+                            p += "<td>" + countries[index].name + "</td><td>" + province + "</td><td>" + popul + "</td><td>" + inflation +
+                                "</td><td>" + noOfCity + "</td><td>" + currency + "</td>";
+                            $('#details').html(p);
+                        });
+                    });
+                }
+            });
+            //if input doesnt match with any country in the provided data set.
+            if (!flag) {
+                alert('No data found!');
             }
-        });
-    })
+        })
+    });
 </script>
+
 </html>
-
-
-

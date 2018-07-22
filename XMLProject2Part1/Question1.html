@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Question 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<h1> Countries </h1>
+<hr />
+    <div></div>
+    <script>
+            $(document).ready(function() {
+                $.get('Country.xml', function(d){
+                    var $xml = $(d);
+                    var html = "<table border='1'>";
+                    html += "<tr>";
+                    html += "<th>Country name</th>";
+                    html += "<th>Population Growth</th>";
+                    html += "<th>Total GDP</th>";
+                    html += "<th>Area</th>";
+                    html += "</tr>";
+                    $xml.find("country").each(function(i, item) {
+                        html += "<tr>";
+                        html += "<td>" + $(item).find('> name').text() + "</td>";
+                        html += "<td>" + $(item).find('> population_growth').text() + "</td>";
+                        html += "<td>" + $(item).find('> gdp_total').text() + "</td>";
+                        html += "<td>" + $(item).attr('area') + "</td>";
+                        html += "</tr>";
+                    });
+                    html += "</table>";
+                    $('div').html(html);
+                });
+            });
+    </script>
+</body>
+</html>

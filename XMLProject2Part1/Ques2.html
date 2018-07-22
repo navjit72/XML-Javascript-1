@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Ques 2</title>
@@ -9,50 +10,50 @@
     <script>
         $(document).ready(function () {
             var countryName = prompt("Enter the country name : ");
-            var province=0;
-            var population=0;
-            var flag=false;
-            var cities=0;
-            var inflation=0;
+            var province = 0;
+            var population = 0;
+            var flag = false;
+            var cities = 0;
+            var inflation = 0;
             $.getJSON("Country.json")
                 .done(function (result) {
                     var countries = result.country;
-                     $.each(countries, function (i, value) {
+                    $.each(countries, function (i, value) {
                         if (countries[i].name == countryName) {
-                            if(value.hasOwnProperty('province')){
+                            if (value.hasOwnProperty('province')) {
                                 province = countries[i].province.length;
-                                flag=true;
+                                flag = true;
                             }
-                            if(flag==false) {
-                                if(countries[i].city.length) {
+                            if (flag == false) {
+                                if (countries[i].city.length) {
                                     cities = countries[i].city.length
                                 }
                                 else
-                                    cities+=1;
+                                    cities += 1;
                             }
-                            else{
-                                $.each(countries[i].province,function(k,prov){
-                                    if(countries[i].province[k].city.length) {
+                            else {
+                                $.each(countries[i].province, function (k, prov) {
+                                    if (countries[i].province[k].city.length) {
                                         cities += countries[i].province[k].city.length
                                     }
-                                    else{
+                                    else {
                                         cities += 1;
                                     }
                                 })
                             }
-                            if(value.hasOwnProperty('inflation')){
+                            if (value.hasOwnProperty('inflation')) {
                                 inflation = value.inflation;
                             }
-                            $.each(value.population,function (j,pop) {
-                                if(pop["@year"] == "2011"){
-                                    population=pop["#text"];
+                            $.each(value.population, function (j, pop) {
+                                if (pop["@year"] == "2011") {
+                                    population = pop["#text"];
                                 }
                             })
-                            $("#country").append("<tr><td>" + countries[i].name + "</td><td>"+ province + "</td><td>"+
-                                population+"</td><td>" + inflation + "</td><td>" + cities + "</td></tr>");
+                            $("#country").append("<tr><td>" + countries[i].name + "</td><td>" + province + "</td><td>" +
+                                population + "</td><td>" + inflation + "</td><td>" + cities + "</td></tr>");
 
                         }
-                     })
+                    })
                 })
                 .fail(function (error) {
                     alert("Error loading file");
@@ -60,15 +61,17 @@
         });
     </script>
 </head>
+
 <body>
-<table id="country" border="1">
-    <tr>
-        <th>Country</th>
-        <th>No of provinces</th>
-        <th>Population in 2011</th>
-        <th>Inflation</th>
-        <th>No of citites</th>
-    </tr>
-</table>
+    <table id="country" border="1" align="center">
+        <tr style="background-color: yellow">
+            <th>Country</th>
+            <th>No of provinces</th>
+            <th>Population in 2011</th>
+            <th>Inflation</th>
+            <th>No of citites</th>
+        </tr>
+    </table>
 </body>
+
 </html>
